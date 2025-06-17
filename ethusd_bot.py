@@ -14,7 +14,7 @@ import os
 API_KEY = os.getenv("DELTA_API_KEY")
 API_SECRET = os.getenv("DELTA_API_SECRET")
 BASE_URL = "https://cdn-ind.testnet.deltaex.org"
-USD_ASSET_ID = 14  # Confirmed from wallet response
+USD_ASSET_ID = 3  # Confirmed from wallet response
 
 def authenticate():
     try:
