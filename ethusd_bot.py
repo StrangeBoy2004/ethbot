@@ -32,17 +32,19 @@ def authenticate():
 # === FETCH USD BALANCE ===
 def get_usd_balance(client):
     try:
-        wallet = client.get_balances(asset_id=USD_ASSET_ID)
-        if wallet:
-            balance = float(wallet["available_balance"])
-            print(f"💰 USD Balance: {balance:.4f} USD")
-            return balance
-        else:
-            print("❌ USD wallet not found.")
-            return None
+        response = client.request("GET", "/v2/wallet/balances", auth=True)
+        wallets = response.json().get("result", [])
+        for wallet in wallets:
+            if wallet.get("asset_symbol") == "USD":
+                balance = float(wallet["available_balance"])
+                print(f"💰 USD Balance: {balance:.4f} USD")
+                return balance
+        print("❌ USD wallet not found.")
+        return None
     except Exception as e:
         print(f"❌ Failed to fetch balance: {e}")
         return None
+
 
 # === SETUP TRADE LOG FILE ===
 def setup_trade_log():
