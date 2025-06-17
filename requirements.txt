@@ -3,3 +3,4 @@ numpy
 ta
 ccxt
 delta_rest_client
+datetime
