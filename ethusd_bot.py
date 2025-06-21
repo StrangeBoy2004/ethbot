@@ -30,20 +30,7 @@ def authenticate():
         return None
 
 # === FETCH USD BALANCE ===
-def get_usd_balance(client):
-    try:
-        response = client.request("GET", "/v2/wallet/balances", auth=True)
-        wallets = response.json().get("result", [])
-        for wallet in wallets:
-            if wallet.get("asset_symbol") == "USD":
-                balance = float(wallet["available_balance"])
-                print(f"💰 USD Balance: {balance:.4f} USD")
-                return balance
-        print("❌ USD wallet not found.")
-        return None
-    except Exception as e:
-        print(f"❌ Failed to fetch balance: {e}")
-        return None
+Port scan timeout reached, no open ports detected. Bind your service to at least one port. If you don't need to receive traffic on any port, create a background worker instead.
 
 
 # === SETUP TRADE LOG FILE ===
